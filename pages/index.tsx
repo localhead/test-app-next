@@ -2,8 +2,8 @@ import { TitleWrapper } from "@components/TitleWrapper";
 
 import { MainLayout } from "@layouts/MainLayout";
 import { CountriesSearchSection } from "@sections/CountriesSearchSection";
-import { ExplanationsSection } from "@sections/ExplanationsSection";
 import { PopularCountriesSection } from "@sections/PopularCountriesSection";
+import { ProductFunctionalitySection } from "@sections/ProductFunctionalitySection";
 import Head from "next/head";
 
 export default function MainPage() {
@@ -22,7 +22,7 @@ export default function MainPage() {
       </TitleWrapper>
       <CountriesSearchSection />
       <PopularCountriesSection />
-      <ExplanationsSection />
+      <ProductFunctionalitySection />
     </MainLayout>
   );
 }

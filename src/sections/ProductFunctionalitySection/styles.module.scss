@@ -1,0 +1,20 @@
+.container {
+  //background: rgb(213, 154, 154);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+  gap: 6px;
+
+  scroll-behavior: smooth;
+
+  padding-bottom: 15px;
+}
+
+.scrollable {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+}

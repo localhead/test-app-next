@@ -1,0 +1,20 @@
+.container {
+  padding: 24px 44px 0px 44px;
+  border-radius: 20px;
+  background: var(--color-background);
+  min-width: 250px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.container__image {
+  width: 162px;
+  height: 246px;
+
+  background: var(--color-gray-4);
+
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
