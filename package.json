@@ -1,5 +1,5 @@
 {
-  "name": "yesim-test-app-next-pages",
+  "name": "yesim-test-app-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,16 +9,35 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
-    "next": "15.0.3"
+    "@hookform/resolvers": "^2.9.10",
+    "@reduxjs/toolkit": "^1.9.2",
+    "@svgr/webpack": "^6.5.1",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "date-fns": "^2.29.3",
+    "framer-motion": "^10.16.16",
+    "next": "15.0.3",
+    "next-intl": "^3.19.3",
+    "next-redux-wrapper": "^8.1.0",
+    "nextjs-progressbar": "^0.0.16",
+    "react": "18.2.0",
+    "react-content-loader": "^6.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.0",
+    "react-redux": "^8.0.4",
+    "sass": "^1.81.0",
+    "sass-loader": "^16.0.3",
+    "styled-components": "^5.3.6",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/styled-components": "^5.1.26",
     "eslint": "^8",
-    "eslint-config-next": "15.0.3"
+    "eslint-config-next": "15.0.3",
+    "typescript": "^5"
   }
 }

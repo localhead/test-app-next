@@ -1,0 +1,11 @@
+.container {
+  margin: auto;
+}
+
+.inner {
+  max-width: var(--main-container-width-inner);
+}
+
+.wide {
+  max-width: var(--main-container-width-wide);
+}

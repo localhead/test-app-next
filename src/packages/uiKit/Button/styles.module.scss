@@ -1,0 +1,61 @@
+.button {
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--color-white);
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  display: inline-flex;
+
+  gap: 5px;
+
+  // block
+  &.block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  // colors
+  &.primary {
+    background: var(--color-black-default);
+
+    &:hover {
+      background: var(--color-black-light);
+    }
+    &:active {
+      background: var(--color-black-dark);
+    }
+  }
+
+  &.outlined {
+    background: var(--color-white);
+  }
+
+  &.secondary {
+    background: var(--color-secondary);
+  }
+
+  // sizes
+  &.small {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  &.medium {
+    font-size: 16px;
+    padding: 15px 25px;
+  }
+
+  &.large {
+    font-size: 20px;
+    padding: 15px 30px;
+  }
+
+  &.has-icon {
+    padding-right: 0;
+  }
+}
