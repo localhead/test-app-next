@@ -1,0 +1,12 @@
+.custom-link {
+  text-decoration: none;
+  color: inherit;
+
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+}

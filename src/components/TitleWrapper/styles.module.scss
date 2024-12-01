@@ -1,7 +1,4 @@
 .container {
-  font-size: 34px;
-  font-weight: 700;
-
   &--align-left {
     text-align: left;
   }
@@ -13,4 +10,9 @@
   &--align-right {
     text-align: right;
   }
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }

@@ -2,6 +2,7 @@ import { interFont } from "@features/fonts/utils/localFont";
 import { storeWrapper } from "@features/store/store";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import NextNProgress from "nextjs-progressbar";
 import { Provider } from "react-redux";
 
 import "@styles/colors.scss";
@@ -13,6 +14,7 @@ export default function App({ Component, ...rest }: AppProps) {
 
   return (
     <Provider store={store}>
+      <NextNProgress color={"#FF8801"} />
       <Head>
         <meta charSet="UTF-8" />
         <title>Yesim App</title>

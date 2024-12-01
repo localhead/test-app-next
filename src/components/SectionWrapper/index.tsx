@@ -6,10 +6,18 @@ import styles from "./styles.module.scss";
 interface TitleLargeProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   margin?: string;
+
+  titleVariant?: "large" | "medium";
 }
 
 const SectionWrapperComponent: FC<TitleLargeProps> = (props) => {
-  const { children, title, margin = "0", ...restProps } = props;
+  const {
+    children,
+    title,
+    margin = "24px 0px 0px 0px",
+    titleVariant = "medium",
+    ...restProps
+  } = props;
 
   return (
     <div
@@ -17,7 +25,12 @@ const SectionWrapperComponent: FC<TitleLargeProps> = (props) => {
       style={{ margin: margin }}
       {...restProps}
     >
-      <TitleWrapper.Medium>{title}</TitleWrapper.Medium>
+      {titleVariant === "large" && (
+        <TitleWrapper.Large>{title}</TitleWrapper.Large>
+      )}
+      {titleVariant === "medium" && (
+        <TitleWrapper.Medium>{title}</TitleWrapper.Medium>
+      )}
       <div className={`${styles.container__content}`}>{children}</div>
     </div>
   );

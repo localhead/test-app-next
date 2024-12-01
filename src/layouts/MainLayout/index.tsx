@@ -15,9 +15,7 @@ export const MainLayout: FC<MainLayoutProps> & {
   return (
     <div className={styles["layout-container"]}>
       <MainLayout.Header />
-      <main>
-        <Container variant="inner">{children}</Container>
-      </main>
+      <Container variant="inner">{children}</Container>
     </div>
   );
 };

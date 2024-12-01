@@ -1,78 +1,88 @@
-.inputContainer {
-  display: flex;
-  min-width: 0;
-  padding: 2px 4px;
-
-  &--medium {
-    border-radius: 16px;
-  }
-
-  &--outlined {
-    border: 1px solid var(--color-gray-0);
-    background: var(--color-white);
-
-    &__input::placeholder {
-      color: #aaa;
-    }
-
-    &:focus,
-    &:focus-within {
-      border-color: var(--color-dark-default);
-    }
-  }
-
-  &--filled {
-    background: var(--color-gray-2);
-
-    &:focus,
-    &:focus-within {
-      outline: none;
-      border-color: var(--color-dark-default);
-    }
-  }
-}
-
-.inputContainer__left,
-.inputContainer__right {
+.input-container {
   display: flex;
   align-items: center;
-  padding: 10px 10px;
-
-  color: var(--color-gray-3);
-}
-
-.inputContainer__input {
-  flex: 1;
-  display: block;
   min-width: 0;
-  border: none;
-  line-height: 120%;
-  background: transparent;
-  font-family: inherit;
+  flex-direction: column;
 
-  &:focus,
-  &:focus-visible,
-  &:active {
-    outline: none;
+  gap: 5px;
+
+  &__errorText {
+    font-family: inherit;
+    font-size: 12px;
+    color: var(--color-error);
+    font-weight: 400;
+    min-height: 32px;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 15px;
+    padding-top: 5px;
   }
 
-  &::placeholder {
-    color: var(--color-gray-3);
-  }
+  &__inner {
+    display: flex;
+    width: 100%;
+    gap: 5px;
 
-  &--medium {
-    font-size: 17px;
-
-    &::placeholder {
-      font-size: 17px;
+    &--errorStyle {
+      border: 1px solid var(--color-error);
     }
-  }
 
-  &--small {
-    font-size: 14px;
+    &--outlined {
+      background: var(--color-white);
+    }
 
-    &::placeholder {
-      font-size: 14px;
+    &--filled {
+      background: var(--color-gray-2);
+    }
+
+    &--medium {
+      padding: 0px 12px;
+      border-radius: 12px;
+    }
+
+    &_left,
+    &_right {
+      display: flex;
+      align-items: center;
+      color: var(--color-gray-3);
+    }
+
+    &_input {
+      flex: 1;
+      display: block;
+      min-width: 0;
+      border: none;
+      line-height: 120%;
+      background: transparent;
+      font-family: inherit;
+      padding: 0;
+
+      &:focus,
+      &:focus-visible,
+      &:active {
+        outline: none;
+      }
+
+      &::placeholder {
+        padding-left: 2px;
+        color: var(--color-gray-3);
+      }
+
+      &--medium {
+        font-size: 17px;
+        padding: 10px 0px;
+      }
+
+      &--small {
+        font-size: 14px;
+      }
+
+      &--filled {
+        &::placeholder {
+          color: var(--color-gray-1);
+        }
+      }
     }
   }
 }

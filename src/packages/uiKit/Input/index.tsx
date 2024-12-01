@@ -12,6 +12,7 @@ export interface InputProps
   right?: ReactNode;
   variant?: InputVariant;
   size?: InputSize;
+  error?: string;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -20,9 +21,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       onChange,
       left,
       right,
-      variant = "outlined",
+      variant = "filled",
       size = "medium",
       className,
+      error,
       style,
       ...restProps
     } = props;
@@ -35,23 +37,43 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         : undefined;
     }, [onChange]);
 
+    const errorClass = error ? "errorStyle" : "";
+
     return (
       <div
-        className={`${styles.inputContainer} ${
-          styles[`inputContainer--${variant}`]
-        } ${styles[`inputContainer--${size}`]} ${className || ""}`}
+        className={`${styles["input-container"]} ${
+          styles[`input-container--${variant}`]
+        } ${styles[`input-container--${size}`]} ${className || ""}`}
         style={style}
       >
-        {left && <div className={styles.inputContainer__left}>{left}</div>}
-        <input
-          ref={ref}
-          onChange={onChangeHandler}
-          className={`${styles.inputContainer__input} ${
-            styles[`inputContainer__input--${size}`]
+        <div
+          className={`${styles["input-container__inner"]} ${
+            styles[`input-container__inner--${size}`]
+          } ${styles[`input-container__inner--${variant}`]} ${
+            styles[`input-container__inner--${errorClass}`]
           }`}
-          {...restProps}
-        />
-        {right && <div className={styles.inputContainer__right}>{right}</div>}
+        >
+          {left && (
+            <div className={styles["input-container__inner_left"]}>{left}</div>
+          )}
+          <input
+            ref={ref}
+            onChange={onChangeHandler}
+            className={`${styles["input-container__inner_input"]} ${
+              styles[`input-container__inner_input--${size}`]
+            } ${styles[`input-container__inner_input--${variant}`]}`}
+            {...restProps}
+          />
+
+          {right && (
+            <div className={styles["input-container__inner_right"]}>
+              {right}
+            </div>
+          )}
+        </div>
+        {error && (
+          <div className={styles["input-container__errorText"]}>{error}</div>
+        )}
       </div>
     );
   }

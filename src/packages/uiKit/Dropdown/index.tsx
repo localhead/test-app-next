@@ -1,79 +1,69 @@
-import { CaretIcon } from "@packages/icons";
-import { FC, memo, useRef, useState } from "react";
-import useOutsideClick from "../utils/useOutsideClick";
+import { FC, PropsWithChildren, forwardRef, memo } from "react";
+import { Typography } from "../Typography";
 import styles from "./styles.module.scss";
 import { DropdownItem } from "./types";
 
-interface DropdownComponentProps {
-  selected: DropdownItem;
-  options: DropdownItem[];
+interface DropdownComponentProps
+  extends PropsWithChildren,
+    React.RefAttributes<HTMLDivElement> {
+  options: DropdownItem[] | null;
   onChange: (item: DropdownItem) => void;
+  isOpen: boolean;
+  isLoading?: boolean;
 }
 
-const DropdownComponent: FC<DropdownComponentProps> = ({
-  selected,
-  options,
-  onChange,
-}) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const toggleHandler = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const isButtonActive = isOpen ? styles.active : "";
-
-  const selectRef = useRef<HTMLButtonElement | null>(null);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-  useOutsideClick([selectRef, dropdownRef], toggleHandler, isOpen);
+const DropdownComponent: FC<DropdownComponentProps> = forwardRef<
+  HTMLDivElement,
+  DropdownComponentProps
+>(({ options, children, onChange, isOpen, isLoading }, ref) => {
+  const isLoadingClass = isLoading ? styles["dropdown__item-loading"] : "";
+  const isEmpty = options && options.length === 0;
 
   return (
-    <div className={styles.dropdown}>
-      <button
-        ref={selectRef}
-        className={`${styles["dropdown__button"]} ${isButtonActive}`}
-        onClick={toggleHandler}
-      >
-        {selected.content}
-        <CaretIcon
-          size={12}
-          strokeWidth={2}
-          className={`${styles["dropdown__icon"]} ${
-            isOpen ? styles["dropdown__icon--rotated"] : ""
-          }`}
-        />
-      </button>
+    <>
       <div
-        ref={dropdownRef}
-        className={`${styles["dropdown__menu"]} ${
-          isOpen ? styles["dropdown__menu--open"] : ""
+        className={`${styles.dropdown__overlay} ${
+          isOpen ? styles["dropdown__overlay--open"] : ""
         }`}
-      >
-        {options.map((item) => {
-          const onSelectHandler = () => {
-            onChange(item);
-            setIsOpen(false);
-          };
+      />
+      <div className={styles.dropdown} ref={ref}>
+        <div>{children}</div>
+        <div
+          className={`${styles["dropdown__menu"]} ${
+            isOpen
+              ? styles["dropdown__menu--open"]
+              : styles["dropdown__menu--closed"]
+          }`}
+        >
+          {options &&
+            options.map((item) => {
+              const onSelectHandler = () => {
+                onChange(item);
+              };
 
-          return (
-            <div
-              key={item.value}
-              className={styles["dropdown__item"]}
-              onClick={onSelectHandler}
-            >
-              {item.content}
-              <CaretIcon
-                size={12}
-                strokeWidth={2}
-                className={styles["dropdown__item-icon"]}
-              />
+              return (
+                <div
+                  key={item.value}
+                  className={`${styles["dropdown__item"]} ${isLoadingClass}`}
+                  onClick={onSelectHandler}
+                >
+                  {item.content}
+                </div>
+              );
+            })}
+          {!isLoading && isEmpty && (
+            <div className={styles["dropdown__not-found"]}>
+              <Typography nowrap size={17} weight="400">
+                {`Ничего не найдено :(`}
+              </Typography>
             </div>
-          );
-        })}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
-};
+});
+
+DropdownComponent.displayName = "DropdownComponent";
 
 export const Dropdown = memo(DropdownComponent);

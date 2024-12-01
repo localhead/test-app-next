@@ -1,9 +1,9 @@
 import { TitleWrapper } from "@components/TitleWrapper";
 
+import { CountriesSearch } from "@features/countries/components/CountriesSearch";
+import { PopularCountriesSection } from "@features/countries/sections/PopularCountriesSection";
+import { ProductFunctionalitySection } from "@features/productFunctionality/sections/ProductFunctionalitySection";
 import { MainLayout } from "@layouts/MainLayout";
-import { CountriesSearchSection } from "@sections/CountriesSearchSection";
-import { PopularCountriesSection } from "@sections/PopularCountriesSection";
-import { ProductFunctionalitySection } from "@sections/ProductFunctionalitySection";
 import Head from "next/head";
 
 export default function MainPage() {
@@ -20,7 +20,7 @@ export default function MainPage() {
           eSIM карты с интернетом для путешествий и бизнеса
         </TitleWrapper.Large>
       </TitleWrapper>
-      <CountriesSearchSection />
+      <CountriesSearch />
       <PopularCountriesSection />
       <ProductFunctionalitySection />
     </MainLayout>

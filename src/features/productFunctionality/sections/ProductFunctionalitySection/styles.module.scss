@@ -1,0 +1,19 @@
+.wrapper {
+  overflow: scroll;
+  gap: 6px;
+  scroll-behavior: smooth;
+
+  padding-bottom: 15px;
+  scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+}

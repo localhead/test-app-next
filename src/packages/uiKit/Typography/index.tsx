@@ -8,9 +8,7 @@ export type TypographyProps = {
   nowrap?: boolean;
   ellipsis?: boolean;
   as?: keyof JSX.IntrinsicElements;
-  maxLines?: number;
-  lines?: number;
-  title?: string;
+  maxLines?: string;
 } & React.PropsWithChildren<React.PropsWithoutRef<JSX.IntrinsicElements["p"]>>;
 
 import styles from "./styles.module.scss";
@@ -24,21 +22,21 @@ export const Typography: React.FC<TypographyProps> = (props) => {
     nowrap = false,
     ellipsis = false,
     maxLines,
-    lines,
+
     ...restProps
   } = props;
 
+  const isEllipsis = ellipsis ? "ellipsis" : "";
+  const isNowrap = nowrap ? "nowrap" : "";
+
   return (
     <p
-      className={styles.typography}
+      className={`${styles.typography} ${styles[isEllipsis]} ${styles[isNowrap]}`}
       style={{
-        
         fontSize: size ? `${size}px` : "16px",
         fontWeight: weight ? `${weight}` : "400",
         color: color ? `var(${color})` : "black",
-        whiteSpace: nowrap ? `nowrap` : "normal",
-        textOverflow: ellipsis ? "ellipsis" : "initial",
-        overflow: ellipsis ? "hidden" : "auto",
+        WebkitLineClamp: maxLines,
       }}
       {...restProps}
     />
