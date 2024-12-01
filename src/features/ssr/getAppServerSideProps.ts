@@ -25,9 +25,10 @@ export const getAppServerSideProps = <
 ): GetServerSideProps<P, Q, D> => {
   return storeWrapper.getServerSideProps((store) => {
     return async (ctx) => {
-      // const locale = store.getState().language.value;
-      // const messages = (await import(`../../../../locales/${locale}.json`))
-      //   .default;
+      const locale = ctx.locale;
+
+      const messages = (await import(`../../../locales/${locale}.json`))
+        .default;
 
       const callbackRes = await callback(
         store,
@@ -38,6 +39,8 @@ export const getAppServerSideProps = <
         ...callbackRes,
         props: {
           ...(callbackRes as any).props,
+          messages,
+          locale,
         },
       };
     };

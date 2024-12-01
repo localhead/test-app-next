@@ -27,12 +27,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "file-declarations.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.scss"
-  ],
+  "include": ["next-env.d.ts", "file-declarations.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

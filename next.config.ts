@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 const path = require("path");
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
 
   compiler: {
@@ -10,10 +9,10 @@ const nextConfig: NextConfig = {
   },
 
   i18n: {
-    locales: ["en", "ru", "kz"],
+    locales: ["en", "ru"],
     defaultLocale: "en",
-    localeDetection: false,
   },
+  trailingSlash: true,
 
   webpack(config) {
     config.resolve.alias = {

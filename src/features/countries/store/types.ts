@@ -35,5 +35,5 @@ export type CountryRecord = {
 export type GetCountriesResponse = [CountryRecord[]];
 
 export type GetCountriesRequest = {
-  lang?: "ru" | "en";
+  lang?: "ru" | "en" | string;
 };

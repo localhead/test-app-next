@@ -9,19 +9,35 @@ import "@styles/colors.scss";
 import "@styles/globals.scss";
 import "@styles/variables.scss";
 
-export default function App({ Component, ...rest }: AppProps) {
+import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
+
+export default function App({
+  Component,
+  ...rest
+}: AppProps<{
+  locale: string;
+  messages: AbstractIntlMessages;
+}>) {
   const { store, props } = storeWrapper.useWrappedStore(rest);
+
+  const { messages, locale } = rest.pageProps;
 
   return (
     <Provider store={store}>
-      <NextNProgress color={"#FF8801"} />
-      <Head>
-        <meta charSet="UTF-8" />
-        <title>Yesim App</title>
-      </Head>
-      <main className={interFont.className}>
-        <Component {...props.pageProps} />
-      </main>
+      <NextIntlClientProvider
+        locale={locale || "en"}
+        timeZone="Europe/Moscow"
+        messages={messages}
+      >
+        <NextNProgress color={"#FF8801"} />
+        <Head>
+          <meta charSet="UTF-8" />
+          <title>Yesim App</title>
+        </Head>
+        <main className={interFont.className}>
+          <Component {...props.pageProps} />
+        </main>
+      </NextIntlClientProvider>
     </Provider>
   );
 }

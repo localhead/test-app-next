@@ -5,7 +5,7 @@ import { useGetLanguageInfoCards } from "@features/languages/hooks/useGetLanguag
 import { languageMockData } from "@features/languages/mock/constants";
 import { langSlice } from "@features/languages/store/slices";
 import { LanguageItem } from "@features/languages/types";
-import { useAppDispatch, useAppSelector } from "@features/store/hooks";
+import { useAppDispatch } from "@features/store/hooks";
 import { Button } from "@packages/uiKit/Button";
 import { Dropdown } from "@packages/uiKit/Dropdown";
 import { useGetDropdownContentFill } from "@packages/uiKit/Dropdown/hooks/useGetDropdownContentFill";
@@ -16,7 +16,6 @@ import { DropdownItem } from "./types";
 const LanguageSelectorComponent: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const lang = useAppSelector((store) => store.lang.label);
   const dispatch = useAppDispatch();
 
   const [selectedValue, setSelectedValue] = useState<LanguageItem["label"]>(

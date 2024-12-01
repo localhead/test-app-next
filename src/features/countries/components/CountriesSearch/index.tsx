@@ -36,6 +36,7 @@ export const CountriesSearch: FC = () => {
         options={isLoading ? loadingNode : fetchedDateOptions}
         ref={dropdownRef}
         isLoading={isLoading}
+        isOverlay
       >
         <Input
           onChange={setSearchValue}
