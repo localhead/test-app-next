@@ -8,4 +8,10 @@
 
 .wide {
   max-width: var(--main-container-width-wide);
+  padding: 0px 8px;
+}
+
+.mobile {
+  width: 100%;
+  padding: 0px 8px;
 }

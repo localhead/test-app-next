@@ -3,6 +3,7 @@ import { FC } from "react";
 import { SectionWrapper } from "@components/SectionWrapper";
 import { CountryRecord } from "@features/countries/store/types";
 
+import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { Typography } from "@packages/uiKit/Typography";
 import { useTranslations } from "next-intl";
 import Flag from "react-world-flags";
@@ -20,10 +21,15 @@ export const CountriesAndOperatorsSection: FC<
 
   const t = useTranslations("CountryPage");
 
+  const width = useWindowWidth();
+  const isMobile = width === "mobile";
+  const margin = isMobile ? "12px 0px" : "40px 0px";
+
   return (
     <SectionWrapper
       title={t("CountriesAndOperatorsTitle")}
       titleVariant="medium"
+      margin={margin}
     >
       <div className={styles.container}>
         <div className={styles.container__left}>

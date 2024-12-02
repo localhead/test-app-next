@@ -1,11 +1,14 @@
 import { useMemo } from "react";
-import { CountryInfoCard } from "../components/CountryInfoCard";
-import { CountryInfoCardBackground } from "../components/CountryInfoCard/types";
+import {
+  CountryInfoCard,
+  CountryInfoCardProps,
+} from "../components/CountryInfoCard";
 import { CountryRecord } from "../store/types";
 
 export const useGetCountryInfoCards = (
   data: CountryRecord[] | null,
-  background: CountryInfoCardBackground
+  background?: CountryInfoCardProps["background"],
+  paddingVariant?: CountryInfoCardProps["paddingVariant"]
 ) => {
   return useMemo(() => {
     return data
@@ -18,10 +21,11 @@ export const useGetCountryInfoCards = (
               price={item.price_per_day.amount}
               symbol={item.price_per_day.symbol}
               background={background}
+              paddingVariant={paddingVariant}
               url={item.url}
             />
           );
         })
       : null;
-  }, [background, data]);
+  }, [background, data, paddingVariant]);
 };

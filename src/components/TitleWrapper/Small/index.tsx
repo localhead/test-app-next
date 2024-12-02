@@ -8,8 +8,8 @@ export const Small: FC<TitleLargeProps> = (props) => {
   const { children, ...restProps } = props;
 
   return (
-    <h2 className={styles.title} {...restProps}>
+    <h4 className={styles.title} {...restProps}>
       {children}
-    </h2>
+    </h4>
   );
 };

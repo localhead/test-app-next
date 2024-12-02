@@ -8,7 +8,7 @@ interface LoadingProps extends Omit<TitleLargeProps, "maxLines" | "children"> {
   text?: string;
 }
 
-export const Loading: FC<LoadingProps> & {} = (props) => {
+export const Loading: FC<LoadingProps> = (props) => {
   const {
     textAlign = "center",
     padding = "45px 0px",

@@ -1,5 +1,7 @@
 import { TitleWrapper } from "@components/TitleWrapper";
+import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { useAppSelector } from "@features/store/hooks";
+import { Typography } from "@packages/uiKit/Typography";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 
@@ -8,18 +10,25 @@ export const AuthSuccessSection: FC = () => {
 
   const t = useTranslations("AuthPage");
 
+  const width = useWindowWidth();
+  const isMobile = width === "mobile";
+
+  const size = isMobile ? 22 : 34;
+
   if (!authState.isAuth)
     return (
       <TitleWrapper textAlign="center">
-        <TitleWrapper.Large>{t("NotAuth")}</TitleWrapper.Large>
+        <Typography size={size} weight="700">
+          {t("NotAuth")}
+        </Typography>
       </TitleWrapper>
     );
 
   return (
     <TitleWrapper textAlign="center">
-      <TitleWrapper.Large>
-        {`${t("Success")} ${authState.email}`}
-      </TitleWrapper.Large>
+      <Typography size={size} weight="700">{`${t("Success")} ${
+        authState.email
+      }`}</Typography>
     </TitleWrapper>
   );
 };

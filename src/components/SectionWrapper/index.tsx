@@ -1,6 +1,7 @@
 import { FC, memo } from "react";
 
 import { TitleWrapper } from "@components/TitleWrapper";
+import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import styles from "./styles.module.scss";
 
 interface TitleLargeProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -19,9 +20,13 @@ const SectionWrapperComponent: FC<TitleLargeProps> = (props) => {
     ...restProps
   } = props;
 
+  const width = useWindowWidth();
+  const isMobile = width === "mobile";
+  const isMobileClass = isMobile ? "mobile" : "";
+
   return (
     <div
-      className={`${styles.container}`}
+      className={`${styles.container} ${styles[isMobileClass]}`}
       style={{ margin: margin }}
       {...restProps}
     >

@@ -11,9 +11,12 @@ import { CaretIcon } from "@packages/icons";
 import { Typography } from "@packages/uiKit/Typography";
 import { useTranslations } from "next-intl";
 import styles from "./styles.module.scss";
-import { CountryInfoCardBackground } from "./types";
+import {
+  CountryInfoCardBackground,
+  CountryInfoCardPaddingVariant,
+} from "./types";
 
-interface CountryInfoCardProps {
+export interface CountryInfoCardProps {
   country: CountryRecord["country"];
   price: CountryPricePerDay["amount"];
   symbol: CountryPricePerDay["symbol"];
@@ -21,17 +24,29 @@ interface CountryInfoCardProps {
 
   background?: CountryInfoCardBackground;
   url: CountryRecord["url"];
+
+  paddingVariant?: CountryInfoCardPaddingVariant;
 }
 
 export const CountryInfoCard: FC<CountryInfoCardProps> = (props) => {
-  const { country, price, symbol, iso, background = "white", url } = props;
+  const {
+    country,
+    price,
+    symbol,
+    iso,
+    background = "white",
+    paddingVariant = "padding-both",
+    url,
+  } = props;
 
   const t = useTranslations("MainPage");
 
   return (
     <CustomLink href={paths.countryDetail(url)}>
       <div
-        className={`${styles.container} ${styles[`container-${background}`]}`}
+        className={`${styles.container} ${styles[`container-${background}`]} ${
+          styles[`container-${paddingVariant}`]
+        }`}
       >
         <div className={styles.container__left}>
           <Flag

@@ -5,3 +5,9 @@
   row-gap: 12px;
   column-gap: 12px;
 }
+
+.mobile {
+  grid-template-columns: 1fr;
+
+  row-gap: 0px;
+}

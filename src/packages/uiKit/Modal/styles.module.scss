@@ -36,6 +36,16 @@
     transform: translateY(0);
     opacity: 1;
   }
+
+  &--mobile {
+    position: fixed;
+    bottom: calc(0% - 50px);
+    max-width: 100%;
+    transform: translateY(-50px);
+
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
 }
 
 .content__header {

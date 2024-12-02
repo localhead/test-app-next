@@ -8,6 +8,7 @@ import { useGetCountryInfoCards } from "@features/countries/hooks/useGetCountryI
 import { sortCountriesByPopularity } from "@features/countries/utils/sortByCountriesPopularity";
 import { Button } from "@packages/uiKit/Button";
 
+import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { useTranslations } from "next-intl";
 import styles from "./styles.module.scss";
 
@@ -16,8 +17,15 @@ export const PopularCountriesSection: FC = () => {
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
+  const width = useWindowWidth();
+  const isMobile = width === "mobile";
+
   const countiesFromMostPopular = sortCountriesByPopularity(data);
-  const nodes = useGetCountryInfoCards(countiesFromMostPopular, "gray");
+  const nodes = useGetCountryInfoCards(
+    countiesFromMostPopular,
+    isMobile ? "white" : "gray",
+    isMobile ? "padding-tops" : "padding-both"
+  );
 
   const expandableNodes = nodes && nodes.slice(0, isExpanded ? -1 : 10);
 

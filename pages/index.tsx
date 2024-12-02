@@ -1,4 +1,4 @@
-import { TitleWrapper } from "@components/TitleWrapper";
+import { MainTitle } from "@components/MainTitle";
 
 import { CountriesSearch } from "@features/countries/components/CountriesSearch";
 import { PopularCountriesSection } from "@features/countries/sections/PopularCountriesSection";
@@ -25,9 +25,7 @@ export default function MainPage() {
         <meta name="description" content="Описание" />
         <meta property="og:site_name" content="Yesim" />
       </Head>
-      <TitleWrapper padding="45px 0px" textAlign="center">
-        <TitleWrapper.Large>{t("title")}</TitleWrapper.Large>
-      </TitleWrapper>
+      <MainTitle />
       <CountriesSearch />
       <PopularCountriesSection />
       <ProductFunctionalitySection />

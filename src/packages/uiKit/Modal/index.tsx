@@ -1,3 +1,4 @@
+import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { CrossIcon } from "@packages/icons";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
@@ -12,6 +13,10 @@ interface ModalProps extends PropsWithChildren {
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   const [isClient, setIsClient] = useState(false);
+
+  const width = useWindowWidth();
+  const isMobile = width === "mobile";
+  const isMobileClass = isMobile ? "mobile" : "";
 
   // Проверка на то чтобы модалка не порталилась при SSR , если вдруг какая то из них открыта изначально
   useEffect(() => {
@@ -30,7 +35,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       <div
         className={`${styles.content} ${
           isOpen ? styles["content--visible"] : ""
-        }`}
+        } ${styles[`content--${isMobileClass}`]}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles["content__header"]}>

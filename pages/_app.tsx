@@ -9,6 +9,7 @@ import "@styles/colors.scss";
 import "@styles/globals.scss";
 import "@styles/variables.scss";
 
+import { AdaptiveContext } from "@features/adaptive/components/AdaptiveContext";
 import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
 
 export default function App({
@@ -29,14 +30,16 @@ export default function App({
         timeZone="Europe/Moscow"
         messages={messages}
       >
-        <NextNProgress color={"#FF8801"} />
-        <Head>
-          <meta charSet="UTF-8" />
-          <title>Yesim App</title>
-        </Head>
-        <main className={interFont.className}>
-          <Component {...props.pageProps} />
-        </main>
+        <AdaptiveContext>
+          <NextNProgress color={"#FF8801"} />
+          <Head>
+            <meta charSet="UTF-8" />
+            <title>Yesim App</title>
+          </Head>
+          <main className={interFont.className}>
+            <Component {...props.pageProps} />
+          </main>
+        </AdaptiveContext>
       </NextIntlClientProvider>
     </Provider>
   );

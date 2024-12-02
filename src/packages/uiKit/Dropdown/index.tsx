@@ -1,4 +1,3 @@
-import { NotFoundText } from "@components/NotFoundText";
 import { FC, PropsWithChildren, forwardRef, memo } from "react";
 import styles from "./styles.module.scss";
 import { DropdownItem } from "./types";
@@ -10,9 +9,7 @@ interface DropdownComponentProps
   onChange: (item: DropdownItem) => void;
   isOpen: boolean;
   isLoading?: boolean;
-
   isOverlay?: boolean;
-  notFoundTitle?: string;
 }
 
 const DropdownComponent: FC<DropdownComponentProps> = forwardRef<
@@ -20,20 +17,9 @@ const DropdownComponent: FC<DropdownComponentProps> = forwardRef<
   DropdownComponentProps
 >(
   (
-    {
-      options,
-      children,
-      onChange,
-      isOpen,
-      isLoading,
-      isOverlay = false,
-      notFoundTitle,
-    },
+    { options, children, onChange, isOpen, isLoading, isOverlay = false },
     ref
   ) => {
-    const isLoadingClass = isLoading ? styles["dropdown__item-loading"] : "";
-    const isEmpty = options && options.length === 0;
-
     return (
       <>
         {isOverlay && (
@@ -62,18 +48,13 @@ const DropdownComponent: FC<DropdownComponentProps> = forwardRef<
                 return (
                   <div
                     key={item.value}
-                    className={`${styles["dropdown__item"]} ${isLoadingClass}`}
+                    className={`${styles["dropdown__item"]}`}
                     onClick={onSelectHandler}
                   >
                     {item.content}
                   </div>
                 );
               })}
-            {!isLoading && isEmpty && (
-              <div className={styles["dropdown__not-found"]}>
-                <NotFoundText />
-              </div>
-            )}
           </div>
         </div>
       </>
