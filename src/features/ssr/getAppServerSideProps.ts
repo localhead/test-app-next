@@ -25,6 +25,7 @@ export const getAppServerSideProps = <
 ): GetServerSideProps<P, Q, D> => {
   return storeWrapper.getServerSideProps((store) => {
     return async (ctx) => {
+      const userAgent = ctx.req.headers["user-agent"];
       const locale = ctx.locale;
 
       const messages = (await import(`../../../locales/${locale}.json`))
@@ -41,6 +42,7 @@ export const getAppServerSideProps = <
           ...(callbackRes as any).props,
           messages,
           locale,
+          userAgent,
         },
       };
     };

@@ -5,7 +5,6 @@ import { PopularCountriesSection } from "@features/countries/sections/PopularCou
 import { ProductFunctionalitySection } from "@features/productFunctionality/sections/ProductFunctionalitySection";
 import { getAppServerSideProps } from "@features/ssr/getAppServerSideProps";
 import { MainLayout } from "@layouts/MainLayout";
-import { useTranslations } from "next-intl";
 import Head from "next/head";
 
 export const getServerSideProps = getAppServerSideProps(async (store, ctx) => {
@@ -15,8 +14,6 @@ export const getServerSideProps = getAppServerSideProps(async (store, ctx) => {
 });
 
 export default function MainPage() {
-  const t = useTranslations("MainPage");
-
   return (
     <MainLayout>
       <Head>

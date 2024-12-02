@@ -8,7 +8,7 @@ import { AuthModal } from "@features/auth/components/AuthModal";
 import { LanguageSelector } from "@features/languages/components/LanguageSelector";
 import { paths } from "@features/routes/paths";
 import Link from "next/link";
-import logo from "public/assets/images/yesimLogo.png";
+import logo from "public/assets/images/logo.png";
 
 export const Header: FC = () => {
   return (

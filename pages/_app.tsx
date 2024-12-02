@@ -17,11 +17,12 @@ export default function App({
   ...rest
 }: AppProps<{
   locale: string;
+  userAgent?: string;
   messages: AbstractIntlMessages;
 }>) {
   const { store, props } = storeWrapper.useWrappedStore(rest);
 
-  const { messages, locale } = rest.pageProps;
+  const { messages, locale, userAgent } = rest.pageProps;
 
   return (
     <Provider store={store}>
@@ -30,7 +31,7 @@ export default function App({
         timeZone="Europe/Moscow"
         messages={messages}
       >
-        <AdaptiveContext>
+        <AdaptiveContext userAgent={userAgent}>
           <NextNProgress color={"#FF8801"} />
           <Head>
             <meta charSet="UTF-8" />

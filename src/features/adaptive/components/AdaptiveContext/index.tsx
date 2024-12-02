@@ -11,6 +11,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { getSelectorsByUserAgent } from "react-device-detect";
 
 const getWindowWidth = (windowWidthPx: number): WindowWidth =>
   windowWidthPx >= Breakpoints.desktop ? "desktop" : "mobile";
@@ -21,7 +22,6 @@ const Context = createContext<{ windowWidth: WindowWidth }>({
 
 interface AdaptiveContextProps extends PropsWithChildren {
   userAgent?: string;
-
   initWidth?: number;
 }
 
@@ -30,6 +30,13 @@ export const AdaptiveContext: FC<AdaptiveContextProps> = (props) => {
   const window = useWindow();
 
   let initWidth = Breakpoints.mobile;
+
+  if (userAgent) {
+    const { isMobile, isBrowser } = getSelectorsByUserAgent(userAgent);
+
+    if (isMobile) initWidth = Breakpoints.desktop - 1;
+    else if (isBrowser) initWidth = Breakpoints.desktop;
+  }
 
   if (!userAgent) {
     const deviceType = getDeviceType();

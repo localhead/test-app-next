@@ -1,5 +1,5 @@
 {
-  "name": "yesim-test-app-next",
+  "name": "test-app-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
     "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-content-loader": "^6.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.0",
     "react-redux": "^8.0.4",
