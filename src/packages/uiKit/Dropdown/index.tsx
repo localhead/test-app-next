@@ -1,5 +1,5 @@
+import { NotFoundText } from "@components/NotFoundText";
 import { FC, PropsWithChildren, forwardRef, memo } from "react";
-import { Typography } from "../Typography";
 import styles from "./styles.module.scss";
 import { DropdownItem } from "./types";
 
@@ -12,6 +12,7 @@ interface DropdownComponentProps
   isLoading?: boolean;
 
   isOverlay?: boolean;
+  notFoundTitle?: string;
 }
 
 const DropdownComponent: FC<DropdownComponentProps> = forwardRef<
@@ -19,7 +20,15 @@ const DropdownComponent: FC<DropdownComponentProps> = forwardRef<
   DropdownComponentProps
 >(
   (
-    { options, children, onChange, isOpen, isLoading, isOverlay = false },
+    {
+      options,
+      children,
+      onChange,
+      isOpen,
+      isLoading,
+      isOverlay = false,
+      notFoundTitle,
+    },
     ref
   ) => {
     const isLoadingClass = isLoading ? styles["dropdown__item-loading"] : "";
@@ -62,9 +71,7 @@ const DropdownComponent: FC<DropdownComponentProps> = forwardRef<
               })}
             {!isLoading && isEmpty && (
               <div className={styles["dropdown__not-found"]}>
-                <Typography nowrap size={17} weight="400">
-                  {`Ничего не найдено :(`}
-                </Typography>
+                <NotFoundText />
               </div>
             )}
           </div>

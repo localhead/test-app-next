@@ -1,1 +1,1 @@
-export type LanguageItem = { id: number; label: string };
+export type LanguageItem = { id: number; locale: string; label: string };

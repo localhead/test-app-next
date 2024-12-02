@@ -5,6 +5,7 @@ import { authSlice, initialAuthState } from "@features/auth/store/slices";
 import { paths } from "@features/routes/paths";
 import { useAppDispatch, useAppSelector } from "@features/store/hooks";
 import Modal from "@packages/uiKit/Modal";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/router";
 import { LoginForm } from "../LoginForm";
 import { LoginFormValues } from "../LoginForm/types";
@@ -17,6 +18,8 @@ export const AuthModal: FC = () => {
   const isAuth = useAppSelector((store) => store.auth.isAuth);
 
   const dispatch = useAppDispatch();
+
+  const t = useTranslations("AuthModal");
 
   const onButtonClickHandler = () => {
     if (isAuth) {
@@ -47,12 +50,12 @@ export const AuthModal: FC = () => {
   return (
     <div className={styles.container}>
       <Button color="primary" size="medium" onClick={onButtonClickHandler}>
-        {!isAuth ? "Войти" : "Выйти"}
+        {!isAuth ? t("login") : t("logout")}
       </Button>
       <Modal
         isOpen={isOpenModal}
         onClose={closeClickHandler}
-        title={`Войдите, чтобы продолжить`}
+        title={t("loginToProceed")}
       >
         <LoginForm onSubmit={onLoginFormSubmit} />
       </Modal>

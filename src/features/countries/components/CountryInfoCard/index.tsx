@@ -9,6 +9,7 @@ import { CustomLink } from "@components/CustomLink";
 import { paths } from "@features/routes/paths";
 import { CaretIcon } from "@packages/icons";
 import { Typography } from "@packages/uiKit/Typography";
+import { useTranslations } from "next-intl";
 import styles from "./styles.module.scss";
 import { CountryInfoCardBackground } from "./types";
 
@@ -24,6 +25,8 @@ interface CountryInfoCardProps {
 
 export const CountryInfoCard: FC<CountryInfoCardProps> = (props) => {
   const { country, price, symbol, iso, background = "white", url } = props;
+
+  const t = useTranslations("MainPage");
 
   return (
     <CustomLink href={paths.countryDetail(url)}>
@@ -41,7 +44,7 @@ export const CountryInfoCard: FC<CountryInfoCardProps> = (props) => {
               {country}
             </Typography>
             <Typography size={10} weight="400">
-              {`от ${symbol} ${price}/GB`}
+              {`${t("CountryPriceFrom")} ${symbol} ${price}/GB`}
             </Typography>
           </div>
         </div>

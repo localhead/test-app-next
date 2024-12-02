@@ -4,6 +4,7 @@ import { SectionWrapper } from "@components/SectionWrapper";
 import { CountryRecord } from "@features/countries/store/types";
 
 import { Typography } from "@packages/uiKit/Typography";
+import { useTranslations } from "next-intl";
 import Flag from "react-world-flags";
 import styles from "./styles.module.scss";
 
@@ -17,8 +18,13 @@ export const CountriesAndOperatorsSection: FC<
 > = (props) => {
   const { name, iso, ...restProps } = props;
 
+  const t = useTranslations("CountryPage");
+
   return (
-    <SectionWrapper title={"Страны и операторы"} titleVariant="medium">
+    <SectionWrapper
+      title={t("CountriesAndOperatorsTitle")}
+      titleVariant="medium"
+    >
       <div className={styles.container}>
         <div className={styles.container__left}>
           <Flag
@@ -32,10 +38,10 @@ export const CountriesAndOperatorsSection: FC<
         </div>
         <div className={styles.container__right}>
           <Typography size={14} weight="500">
-            Оператор 1
+            {t("CountriesAndOperatorsOperator")} 1
           </Typography>
           <Typography size={14} weight="500">
-            Оператор 2
+            {t("CountriesAndOperatorsOperator")} 2
           </Typography>
         </div>
       </div>

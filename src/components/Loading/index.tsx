@@ -1,4 +1,5 @@
 import { TitleLargeProps } from "@components/TitleWrapper";
+import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { PuffLoader } from "react-spinners";
 import styles from "./styles.module.scss";
@@ -11,9 +12,11 @@ export const Loading: FC<LoadingProps> & {} = (props) => {
   const {
     textAlign = "center",
     padding = "45px 0px",
-    text = "Идет загрузка...",
+    text,
     ...restProps
   } = props;
+
+  const t = useTranslations("Misc");
 
   const textAlignClass = styles[`container--align-${textAlign}`];
 
@@ -31,7 +34,9 @@ export const Loading: FC<LoadingProps> & {} = (props) => {
           data-testid="loader"
         />
       </div>
-      <div className={`${styles.container__title} `}>{text}</div>
+      <div className={`${styles.container__title} `}>
+        {text ? text : t("Loading")}
+      </div>
     </div>
   );
 };

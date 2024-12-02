@@ -9,6 +9,7 @@ import { MainLayout } from "@layouts/MainLayout";
 
 export const getServerSideProps = getAppServerSideProps(async (store, ctx) => {
   const param = ctx.params?.id;
+  const lang = ctx.locale;
 
   if (!param || typeof param !== "string") {
     return {
@@ -17,7 +18,7 @@ export const getServerSideProps = getAppServerSideProps(async (store, ctx) => {
   }
 
   const response = await store.dispatch(
-    countriesApi.endpoints.getCountries.initiate({ lang: "ru" })
+    countriesApi.endpoints.getCountries.initiate({ lang: lang })
   );
 
   if (!response.data) {

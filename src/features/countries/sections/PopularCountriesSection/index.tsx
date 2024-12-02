@@ -8,6 +8,7 @@ import { useGetCountryInfoCards } from "@features/countries/hooks/useGetCountryI
 import { sortCountriesByPopularity } from "@features/countries/utils/sortByCountriesPopularity";
 import { Button } from "@packages/uiKit/Button";
 
+import { useTranslations } from "next-intl";
 import styles from "./styles.module.scss";
 
 export const PopularCountriesSection: FC = () => {
@@ -24,8 +25,10 @@ export const PopularCountriesSection: FC = () => {
     setIsExpanded((prev) => !prev);
   };
 
+  const t = useTranslations("MainPage");
+
   return (
-    <SectionWrapper title="Популярные страны">
+    <SectionWrapper title={t("PopularCountriesTitle")}>
       <div className={styles.container}>
         {isLoading && <Loading padding="100px 0px" />}
         <CountryInfoCardWrapper items={expandableNodes} />
@@ -36,8 +39,8 @@ export const PopularCountriesSection: FC = () => {
           onClick={onExpandHandler}
         >
           {isExpanded
-            ? "Показать только самые популярные"
-            : "Показать все страны"}
+            ? t("PopularCountriesButtonExpanded")
+            : t("PopularCountriesButtonShrink")}
         </Button>
       </div>
     </SectionWrapper>

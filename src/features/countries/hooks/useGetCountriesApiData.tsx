@@ -27,7 +27,7 @@ export const useGetCountriesApiData = () => {
     };
 
     fetch();
-  }, [getCountriesQ]);
+  }, [getCountriesQ, locale]);
 
   return { data, isLoading, isError };
 };

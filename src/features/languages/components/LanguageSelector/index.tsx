@@ -3,23 +3,25 @@ import { FC, memo, useRef, useState } from "react";
 
 import { useGetLanguageInfoCards } from "@features/languages/hooks/useGetLanguageInfoCards";
 import { languageMockData } from "@features/languages/mock/constants";
-import { langSlice } from "@features/languages/store/slices";
+
 import { LanguageItem } from "@features/languages/types";
-import { useAppDispatch } from "@features/store/hooks";
 import { Button } from "@packages/uiKit/Button";
 import { Dropdown } from "@packages/uiKit/Dropdown";
 import { useGetDropdownContentFill } from "@packages/uiKit/Dropdown/hooks/useGetDropdownContentFill";
+import { DropdownItem } from "@packages/uiKit/Dropdown/types";
 import useOutsideClick from "@packages/uiKit/utils/useOutsideClick";
+import { useRouter } from "next/router";
 import styles from "./styles.module.scss";
-import { DropdownItem } from "./types";
 
 const LanguageSelectorComponent: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { locale, push, asPath } = useRouter();
 
-  const dispatch = useAppDispatch();
+  // Подгружаем в стейт изначальный язык в урле
+  const initLocale = languageMockData.find((lang) => locale === lang.locale);
 
   const [selectedValue, setSelectedValue] = useState<LanguageItem["label"]>(
-    languageMockData[0].label
+    initLocale?.label ?? languageMockData[0].label
   );
 
   const toggleHandler = () => {
@@ -33,8 +35,7 @@ const LanguageSelectorComponent: FC = () => {
       languageMockData[0];
 
     setSelectedValue(selectedLang.label);
-
-    dispatch(langSlice.actions.setLangDataInStorage(selectedLang));
+    push(asPath, undefined, { locale: selectedLang.locale });
 
     setIsOpen(false);
   };

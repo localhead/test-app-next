@@ -8,6 +8,7 @@ import { searchByCountryName } from "@features/countries/utils/searchByCountryNa
 import { GlassIcon } from "@packages/icons";
 import { Dropdown } from "@packages/uiKit/Dropdown";
 import { useGetDropdownContentFill } from "@packages/uiKit/Dropdown/hooks/useGetDropdownContentFill";
+import { useTranslations } from "next-intl";
 import styles from "./styles.module.scss";
 
 export const CountriesSearch: FC = () => {
@@ -28,6 +29,8 @@ export const CountriesSearch: FC = () => {
 
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
+  const t = useTranslations("MainPage");
+
   return (
     <div className={styles.container}>
       <Dropdown
@@ -40,7 +43,7 @@ export const CountriesSearch: FC = () => {
       >
         <Input
           onChange={setSearchValue}
-          placeholder="Найти направление"
+          placeholder={t("searchPlaceholder")}
           left={<GlassIcon size={20} />}
           variant="filled"
           size="medium"

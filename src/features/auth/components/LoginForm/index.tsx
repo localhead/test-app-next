@@ -4,6 +4,7 @@ import { FC } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@packages/uiKit/Button";
 import { Input } from "@packages/uiKit/Input";
+import { useTranslations } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 import { LoginFormValues } from "./types";
@@ -15,8 +16,12 @@ interface LoginFormProps {
 
 export const LoginForm: FC<LoginFormProps> = (props) => {
   const { onSubmit } = props;
+  const t = useTranslations("AuthModal");
+
+  const schema = validationSchema(t);
+
   const { control, handleSubmit } = useForm<LoginFormValues>({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(schema),
   });
 
   const onSubmitHandler = handleSubmit((data: LoginFormValues) => {
@@ -35,13 +40,13 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
               variant="filled"
               size="medium"
               error={error?.message}
-              placeholder="Введи email"
+              placeholder={t("emailPlaceholder")}
             />
           );
         }}
       />
       <Button size="large" color="primary" block onClick={onSubmitHandler}>
-        Войти
+        {t("login")}
       </Button>
     </form>
   );

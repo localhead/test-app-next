@@ -1,9 +1,36 @@
 {
-  "Header": {
+  "AuthModal": {
     "login": "Войти",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "loginToProceed": "Войдите, чтобы продолжить",
+    "emailPlaceholder": "Введи email",
+    "validationEmailRequired": "Заполните поле email",
+    "validationEmailWrong": "Неправильный формат email"
   },
   "MainPage": {
-    "title": "eSIM карты с интернетом для путешествий и бизнеса"
+    "title": "eSIM карты с интернетом для путешествий и бизнеса",
+    "searchPlaceholder": "Найти направление",
+    "PopularCountriesTitle": "Популярные страны",
+    "CountryPriceFrom": "от",
+    "PopularCountriesButtonShrink": "Показать все страны",
+    "PopularCountriesButtonExpanded": "Показать только самые популярные",
+    "ProductFunctionality": "Как это работает",
+    "ProductFunctionalityMockCard1": "Очень длинный заголовок",
+    "ProductFunctionalityMockCard2": "Нереально очень длинный заголовок",
+    "ProductFunctionalityMockCard3": "Безобразно очень-очень длинный заголовок",
+    "ProductFunctionalityMockCard4": "Кошмарно очень очень длинный длинный длинный заголовок"
+  },
+  "CountryPage": {
+    "CountryDetailInfoDesc": "Туристические SIM-карты с интернетом",
+    "CountriesAndOperatorsTitle": "Страны и операторы",
+    "CountriesAndOperatorsOperator": "Оператор"
+  },
+  "AuthPage": {
+    "NotAuth": "Вы не авторизованы",
+    "Success": "Вы успешно вошли через почту"
+  },
+  "Misc": {
+    "Loading": "Идет загрузка...",
+    "NotFound": "Ничего не найдено :("
   }
 }

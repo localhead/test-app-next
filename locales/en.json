@@ -1,9 +1,36 @@
 {
-  "Header": {
-    "login": "Login",
-    "logout": "Logout"
+  "AuthModal": {
+    "login": "Log in",
+    "logout": "Log out",
+    "loginToProceed": "Log in to proceed",
+    "emailPlaceholder": "Enter your email",
+    "validationEmailRequired": "Please fill in the email field",
+    "validationEmailWrong": "Invalid email format"
   },
   "MainPage": {
-    "title": "eSIM cards with internet for travel and business"
+    "title": "eSIM cards with internet for travel and business",
+    "searchPlaceholder": "Find a destination",
+    "PopularCountriesTitle": "Popular Countries",
+    "CountryPriceFrom": "from",
+    "PopularCountriesButtonShrink": "Show all countries",
+    "PopularCountriesButtonExpanded": "Show only the most popular",
+    "ProductFunctionality": "How it works",
+    "ProductFunctionalityMockCard1": "A very long title",
+    "ProductFunctionalityMockCard2": "An unrealistically very long title",
+    "ProductFunctionalityMockCard3": "An obscenely very, very long title",
+    "ProductFunctionalityMockCard4": "A terribly very, very long, long, long title"
+  },
+  "CountryPage": {
+    "CountryDetailInfoDesc": "Tourist SIM cards with internet",
+    "CountriesAndOperatorsTitle": "Countries and Operators",
+    "CountriesAndOperatorsOperator": "Operator"
+  },
+  "AuthPage": {
+    "NotAuth": "You are not authorized",
+    "Success": "You have successfully logged in via email"
+  },
+  "Misc": {
+    "Loading": "Loading...",
+    "NotFound": "Nothing found :("
   }
 }

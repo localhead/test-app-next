@@ -10,13 +10,11 @@ import Head from "next/head";
 
 export const getServerSideProps = getAppServerSideProps(async (store, ctx) => {
   return {
-    props: {} as MainPageProps,
+    props: {},
   };
 });
 
-interface MainPageProps {}
-
-export default function MainPage(props: MainPageProps) {
+export default function MainPage() {
   const t = useTranslations("MainPage");
 
   return (
