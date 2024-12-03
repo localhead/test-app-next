@@ -3,10 +3,10 @@ import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { useGetFunctionCards } from "@features/productFunctionality/hooks/useGetFunctionCards";
 import { useMockFunctionCardsData } from "@features/productFunctionality/mock/constants";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./styles.module.scss";
 
-export const ProductFunctionalitySection: FC = () => {
+const ProductFunctionalitySectionComponent: FC = () => {
   const getTranslatedMocks = useMockFunctionCardsData();
 
   const cardNodes = useGetFunctionCards(getTranslatedMocks);
@@ -25,3 +25,7 @@ export const ProductFunctionalitySection: FC = () => {
     </SectionWrapper>
   );
 };
+
+export const ProductFunctionalitySection = memo(
+  ProductFunctionalitySectionComponent
+);

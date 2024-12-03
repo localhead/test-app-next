@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 //@ts-ignore
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,7 +14,7 @@ interface LoginFormProps {
   onSubmit: (data: LoginFormValues) => void;
 }
 
-export const LoginForm: FC<LoginFormProps> = (props) => {
+const LoginFormComponent: FC<LoginFormProps> = (props) => {
   const { onSubmit } = props;
   const t = useTranslations("AuthModal");
 
@@ -51,3 +51,5 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
     </form>
   );
 };
+
+export const LoginForm = memo(LoginFormComponent);

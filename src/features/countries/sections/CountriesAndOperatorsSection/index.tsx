@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import { SectionWrapper } from "@components/SectionWrapper";
 import { CountryRecord } from "@features/countries/store/types";
@@ -14,7 +14,7 @@ interface CountriesAndOperatorsSectionProps {
   iso: CountryRecord["iso"];
 }
 
-export const CountriesAndOperatorsSection: FC<
+const CountriesAndOperatorsSectionComponent: FC<
   CountriesAndOperatorsSectionProps
 > = (props) => {
   const { name, iso, ...restProps } = props;
@@ -54,3 +54,7 @@ export const CountriesAndOperatorsSection: FC<
     </SectionWrapper>
   );
 };
+
+export const CountriesAndOperatorsSection = memo(
+  CountriesAndOperatorsSectionComponent
+);

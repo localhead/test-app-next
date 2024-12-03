@@ -3,9 +3,9 @@ import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { useAppSelector } from "@features/store/hooks";
 import { Typography } from "@packages/uiKit/Typography";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-export const AuthSuccessSection: FC = () => {
+const AuthSuccessSectionComponent: FC = () => {
   const authState = useAppSelector((store) => store.auth);
 
   const t = useTranslations("AuthPage");
@@ -32,3 +32,5 @@ export const AuthSuccessSection: FC = () => {
     </TitleWrapper>
   );
 };
+
+export const AuthSuccessSection = memo(AuthSuccessSectionComponent);

@@ -1,4 +1,4 @@
-import { FC, PropsWithoutRef } from "react";
+import { FC, PropsWithoutRef, memo } from "react";
 import { Header } from "./Header";
 
 import { Container } from "./Container";
@@ -7,9 +7,7 @@ import styles from "./styles.module.scss";
 interface MainLayoutProps
   extends PropsWithoutRef<JSX.IntrinsicElements["div"]> {}
 
-export const MainLayout: FC<MainLayoutProps> & {
-  Header: typeof Header;
-} = (props) => {
+const MainLayoutComponent: FC<MainLayoutProps> = (props) => {
   const { children } = props;
 
   return (
@@ -18,6 +16,12 @@ export const MainLayout: FC<MainLayoutProps> & {
       <Container variant="inner">{children}</Container>
     </div>
   );
+};
+
+export const MainLayout = memo(
+  MainLayoutComponent
+) as unknown as typeof MainLayoutComponent & {
+  Header: typeof Header;
 };
 
 MainLayout.Header = Header;

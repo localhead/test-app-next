@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 
 import { Loading } from "@components/Loading";
 import { SectionWrapper } from "@components/SectionWrapper";
@@ -12,7 +12,7 @@ import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { useTranslations } from "next-intl";
 import styles from "./styles.module.scss";
 
-export const PopularCountriesSection: FC = () => {
+const PopularCountriesSectionComponent: FC = () => {
   const { data, isLoading, isError } = useGetCountriesApiData();
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -29,9 +29,9 @@ export const PopularCountriesSection: FC = () => {
 
   const expandableNodes = nodes && nodes.slice(0, isExpanded ? -1 : 10);
 
-  const onExpandHandler = () => {
+  const onExpandHandler = useCallback(() => {
     setIsExpanded((prev) => !prev);
-  };
+  }, []);
 
   const t = useTranslations("MainPage");
 
@@ -54,3 +54,5 @@ export const PopularCountriesSection: FC = () => {
     </SectionWrapper>
   );
 };
+
+export const PopularCountriesSection = memo(PopularCountriesSectionComponent);

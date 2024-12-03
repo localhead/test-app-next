@@ -1,5 +1,5 @@
 import { Button } from "@packages/uiKit/Button";
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 
 import { authSlice, initialAuthState } from "@features/auth/store/slices";
 import { paths } from "@features/routes/paths";
@@ -21,31 +21,34 @@ export const AuthModal: FC = () => {
 
   const t = useTranslations("AuthModal");
 
-  const onButtonClickHandler = () => {
+  const onButtonClickHandler = useCallback(() => {
     if (isAuth) {
       dispatch(authSlice.actions.setAuthDataInStorage(initialAuthState));
       router.push(paths.root());
     } else {
       setIsOpenModal(true);
     }
-  };
+  }, [dispatch, isAuth, router]);
 
   const closeClickHandler = () => {
     setIsOpenModal(false);
   };
 
-  const onLoginFormSubmit = (data: LoginFormValues) => {
-    if (data.email) {
-      dispatch(
-        authSlice.actions.setAuthDataInStorage({
-          isAuth: true,
-          email: data.email,
-        })
-      );
-      router.push(paths.auth());
-      setIsOpenModal(false);
-    }
-  };
+  const onLoginFormSubmit = useCallback(
+    (data: LoginFormValues) => {
+      if (data.email) {
+        dispatch(
+          authSlice.actions.setAuthDataInStorage({
+            isAuth: true,
+            email: data.email,
+          })
+        );
+        router.push(paths.auth());
+        setIsOpenModal(false);
+      }
+    },
+    [dispatch, router]
+  );
 
   return (
     <div className={styles.container}>

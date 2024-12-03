@@ -1,5 +1,5 @@
 import { Input } from "@packages/uiKit/Input";
-import { FC, useRef, useState } from "react";
+import { FC, memo, useCallback, useRef, useState } from "react";
 
 import { Loading } from "@components/Loading";
 import { NotFoundText } from "@components/NotFoundText";
@@ -13,7 +13,7 @@ import useOutsideClick from "@packages/uiKit/utils/useOutsideClick";
 import { useTranslations } from "next-intl";
 import styles from "./styles.module.scss";
 
-export const CountriesSearch: FC = () => {
+const CountriesSearchComponent: FC = () => {
   const [searchValue, setSearchValue] = useState<string | null>(null);
 
   const { data, isLoading, isError } = useGetCountriesApiData();
@@ -32,9 +32,9 @@ export const CountriesSearch: FC = () => {
 
   const isOpen = Boolean(searchValue);
 
-  const dropDownClickHandler = () => {
+  const dropDownClickHandler = useCallback(() => {
     setSearchValue("");
-  };
+  }, []);
 
   const options = isLoading
     ? loadingNode
@@ -68,3 +68,5 @@ export const CountriesSearch: FC = () => {
     </div>
   );
 };
+
+export const CountriesSearch = memo(CountriesSearchComponent);

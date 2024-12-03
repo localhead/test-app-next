@@ -15,7 +15,7 @@ export interface InputProps
   error?: string;
 }
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     const {
       onChange,
@@ -79,4 +79,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = "Input";
+InputComponent.displayName = "Input";
+
+export const Input = InputComponent as typeof InputComponent;

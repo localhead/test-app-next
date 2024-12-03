@@ -1,9 +1,9 @@
 import { TitleWrapper } from "@components/TitleWrapper";
 import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-export const MainTitle: FC = () => {
+export const MainTitleComponent: FC = () => {
   const t = useTranslations("MainPage");
 
   const width = useWindowWidth();
@@ -17,3 +17,5 @@ export const MainTitle: FC = () => {
     </TitleWrapper>
   );
 };
+
+export const MainTitle = memo(MainTitleComponent);
