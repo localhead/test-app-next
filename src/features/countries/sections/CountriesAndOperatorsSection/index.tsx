@@ -4,9 +4,9 @@ import { SectionWrapper } from "@components/SectionWrapper";
 import { CountryRecord } from "@features/countries/store/types";
 
 import { useWindowWidth } from "@features/adaptive/useWindowWidth";
+import { CountryFlagIcon } from "@features/countries/components/CountryFlagIcon";
 import { Typography } from "@packages/uiKit/Typography";
 import { useTranslations } from "next-intl";
-import Flag from "react-world-flags";
 import styles from "./styles.module.scss";
 
 interface CountriesAndOperatorsSectionProps {
@@ -25,6 +25,8 @@ const CountriesAndOperatorsSectionComponent: FC<
   const isMobile = width === "mobile";
   const margin = isMobile ? "12px 0px" : "40px 0px";
 
+  const flag = <CountryFlagIcon iso={iso} />;
+
   return (
     <SectionWrapper
       title={t("CountriesAndOperatorsTitle")}
@@ -33,11 +35,7 @@ const CountriesAndOperatorsSectionComponent: FC<
     >
       <div className={styles.container}>
         <div className={styles.container__left}>
-          <Flag
-            code={iso}
-            style={{ width: 32, height: 32 }}
-            className={styles["container__left-flag"]}
-          />
+          {flag}
           <Typography size={17} weight="400">
             {name}
           </Typography>

@@ -3,9 +3,9 @@ import {
   CountryRecord,
 } from "@features/countries/store/types";
 import { FC } from "react";
-import Flag from "react-world-flags";
 
 import { CustomLink } from "@components/CustomLink";
+import { CountryFlagIcon } from "@features/countries/components/CountryFlagIcon";
 import { paths } from "@features/routes/paths";
 import { CaretIcon } from "@packages/icons";
 import { Typography } from "@packages/uiKit/Typography";
@@ -41,6 +41,8 @@ export const CountryInfoCard: FC<CountryInfoCardProps> = (props) => {
 
   const t = useTranslations("MainPage");
 
+  const flag = <CountryFlagIcon iso={iso} />;
+
   return (
     <CustomLink href={paths.countryDetail(url)}>
       <div
@@ -49,11 +51,12 @@ export const CountryInfoCard: FC<CountryInfoCardProps> = (props) => {
         }`}
       >
         <div className={styles.container__left}>
-          <Flag
+          {flag}
+          {/*           <Flag
             code={iso}
             style={{ width: 32, height: 32 }}
             className={styles["container__left-flag"]}
-          />
+          /> */}
           <div className={styles["container__left-info"]}>
             <Typography size={14} weight="500" maxLines="1" ellipsis>
               {country}
