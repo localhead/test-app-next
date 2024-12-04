@@ -10,7 +10,7 @@ interface CountryFlagIconProps {
 
 export const CountryFlagIcon: FC<CountryFlagIconProps> = (props) => {
   const { iso } = props;
-  const flagSrc = `/icons/${props.iso}.svg`;
+  const flagSrc = `/flags/${props.iso}.svg`;
 
   if (!flagSrc)
     return (
